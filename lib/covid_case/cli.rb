@@ -1,0 +1,3 @@
+class CovidCase::CLI
+
+end
