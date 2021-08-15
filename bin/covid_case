@@ -2,4 +2,4 @@
 
 require_relative "../lib/covid_case"
 
-CovidCase::Scraper.state_page
+CovidCase::CLI
