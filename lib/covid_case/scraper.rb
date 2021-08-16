@@ -1,10 +1,10 @@
 class CovidCase::Scraper
     def self.main_page
-        doc = Nokogiri::HTML(open(main))
-        doc.css(".children a").collect do |state|
-            states << {
-                :name => state.text
-            }
+        doc = Nokogiri::HTML(open("https://www.nytimes.com/interactive/2021/us/covid-cases.html"))
+        doc.css("table.g-table.super-table.withchildren").collect do |state|
+            states = []
+                states << name = state.css(".name").text
+            binding.pry
         end
         states
     end
