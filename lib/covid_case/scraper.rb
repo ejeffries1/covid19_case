@@ -1,10 +1,12 @@
 class CovidCase::Scraper
-    def self.main_page(main)
+    def self.main_page
         doc = Nokogiri::HTML(open(main))
         doc.css(".children a").collect do |state|
-            name = state.text
-            binding.pry
+            states << {
+                :name => state.text
+            }
         end
+        states
     end
 
     def self.state_page
