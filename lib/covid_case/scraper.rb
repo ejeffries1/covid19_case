@@ -4,18 +4,18 @@ class CovidCase::Scraper
     def self.scrape_main_page
         states_info = []
         doc = Nokogiri::HTML(open("https://www.nytimes.com/interactive/2021/us/covid-cases.html"))
-        doc.css("table.g-table.super-table.withchildren").each do |state|
-            #states_info << {
-                name = state.css(".children tr .name").text
-            
-                state_url = state.css("tbody.children a").attribute("href").value
-            #}
-            binding.pry
+        doc.css("tbody.children").each do |state|
+            states_info << {
+                :name => state.css("tr td.name").text
+                :state_url => state.css("a").attribute("href").value
+                    #table.g-table.super-table.withchildren
+            }
+            #binding.pry
         end
-        #states_info
+        states_info
     end
 
-    def self.scrape_state_page
+    def self.scrape_state_page(state_url)
         #doc = Nokogiri::HTML(open("https://www.nytimes.com/interactive/2021/us/covid-cases.html"))
         #covid_hash = {}
         #doc.css(".covid-tracker").each do |element|
