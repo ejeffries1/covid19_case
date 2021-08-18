@@ -1,8 +1,14 @@
 class CovidCase::States
     attr_accessor :name
 
-    def initialize(states)
-        @name = self.send("name=", states[:name])
-        binding.pry
+    @@all = []
+    def initialize(name)
+        @name = name
+        #binding.pry
     end
+
+    #def self.all
+    #CovidCase::Scraper.scrape_main_page
+    #binding.pry
+    #end
 end
