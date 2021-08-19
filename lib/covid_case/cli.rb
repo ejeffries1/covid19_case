@@ -5,13 +5,16 @@ class CovidCase::CLI
     def call
         puts "Welcome to the Covid-Case CLI"
         puts "Please make a selection"
-        get_state
+        get_states
         list_states
+        get_user_state
+        #get_state_info
+        #binding.pry
         #get_case(state)
     end
 
-    def get_state
-        @place = CovidCase::States.all
+    def get_states
+        @place = ["Tennessee", "Illinois", "Massachusetts", "Colorado"]
     end
 
     def list_states
@@ -20,8 +23,18 @@ class CovidCase::CLI
         end
     end
 
-    def make_state
-        students_array = CovidCase::Scraper.main_page(BASE_PATH)
+    def get_user_state
+        input = gets.strip
+        index = input.to_i
+        if valid_input(index)
+            show_state_details(input)
     end
 
+    def valid_input(index)
+        if index == 0 || index > @place.count
+            false
+        else
+            true
+        end
+    end
 end
