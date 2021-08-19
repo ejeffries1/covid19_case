@@ -14,9 +14,10 @@ class CovidCase::States
         @@all
     end
 
-    def state_stat
-        CovidCase::Scraper.scrape_state_page(self.state_url) if @@stats.empty?
-        @@stats = []
+    def self.stats
+        CovidCase::Scraper.scrape_state_page if @@stats.empty?
+        @@stats
+        binding.pry
     end
 
     def save
