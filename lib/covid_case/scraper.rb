@@ -15,8 +15,8 @@ class CovidCase::Scraper
         #@states_info
     end
 
-    def self.scrape_state_page
-
+    def self.scrape_state_page(state_url)
+        
         #doc = Nokogiri::HTML(open(state_page))
         @states_info
         binding.pry

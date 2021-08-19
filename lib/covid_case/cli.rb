@@ -42,7 +42,7 @@ class CovidCase::CLI
         end
     end
 
-    def show_state_details(input)
-
+    def show_state_details(index)
+        @place[index] = CovidCase::Scraper
     end
 end
