@@ -14,20 +14,24 @@ class CovidCase::CLI
     end
 
     def get_states
-        @place = ["Tennessee", "Illinois", "Massachusetts", "Colorado"]
+        @place = CovidCase::States.all
     end
 
     def list_states
         @place.each.with_index(1) do |state, index|
-            puts "#{index}. #{state}"
+            puts "#{index}. #{state.name}"
         end
     end
 
     def get_user_state
         input = gets.strip
         index = input.to_i
-        if valid_input(index)
-            show_state_details(input)
+        if valid_input(index) == false
+            puts "Please make a selection within range"
+            get_user_state
+        else
+            show_state_details(index)
+        end
     end
 
     def valid_input(index)
@@ -36,5 +40,9 @@ class CovidCase::CLI
         else
             true
         end
+    end
+
+    def show_state_details(input)
+
     end
 end
