@@ -1,23 +1,26 @@
 class CovidCase::Covid_info
-    attr_accessor :state, :death, :cases, :vaccinated
+    attr_accessor :state, :covid_hash
    
     @@all = []
-    def initialize(state) #death, cases, vaccinated)
+    def initialize(state)
         @state = state
         #@death = death
-       # @cases = cases
+        #@cases = cases
         #@vaccinated = vaccinated
         save
     end
 
+    #def self.get_details
+    #    CovidCase::Scraper.scrape_state_page(self.state_url)
+    #end
+
     def self.all
-        CovidCase::Scraper.scrape_state_page(self) if @@all.empty?
         @@all
     end
 
-    def add_to_state
-        @state.stats << self unless @state.stats.include?(self)
-    end
+    #def add_to_state
+    #    @state.stats << self unless @state.stats.include?(self)
+    #end
 
     def save
         @@all << self
